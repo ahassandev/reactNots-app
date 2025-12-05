@@ -20,7 +20,7 @@ setCount(text.length);
 if (textareaRef.current) {
 textareaRef.current.style.height = "auto";
 textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
-}
+} 
 }, [text]);
 
 useEffect(() => {
@@ -32,8 +32,8 @@ useEffect(() => {
   } catch (err) {
     console.log("Invalid JSON in localStorage. Clearing...");
     localStorage.removeItem("notes");
-  }
-}, []);
+  } 
+}, []); 
 
 useEffect(() => {
   if (notes.length > 0) {
@@ -47,12 +47,6 @@ const handleClearNotes = useCallback(() => {
   setNotes([]);
   localStorage.removeItem("notes");
   textareaRef.current.focus();
-}, [])
-
-const deleteNotes = useCallback(() => {
-setNotes([notes]);
-localStorage.removeItem("notes");
-textareaRef.current.focus();
 }, [])
 
 
@@ -98,7 +92,6 @@ const handleAddNote = useCallback(() => {
             {notes.map((note, index) => (
               <div key={index} className="p-3 border rounded-lg bg-gray-50">
                 {note}
-                <button onClick={deleteNotes} className="bg-red-700 text-white px-4 py-2 rounded-lg cursor-pointer float-end mb">Delete</button>
               </div>
             ))}
           </div>
